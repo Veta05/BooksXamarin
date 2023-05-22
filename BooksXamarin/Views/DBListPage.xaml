@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BooksXamarin.Views.DBListPage">
+    <StackLayout>
+        <ListView x:Name="booksList" ItemsSource="{Binding}" ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell BindingContextChanged="OnBindingContextChanged">
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding BookName}" 
+                                       FontSize="Medium" 
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="EndAndExpand"
+                                       TextColor="Black"
+                                       FontAttributes="Bold"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Прочитанные книги: " />
+                <Label Text="{Binding ReadBooksCount}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Предстоит прочитать: " />
+                <Label Text="{Binding UnreadBooksCount}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Общее количество книг: " />
+                <Label Text="{Binding TotalBooksCount}" />
+            </StackLayout>
+
+        </StackLayout>
+
+        <Button Text="Добавить" 
+                Clicked="CreateBook"
+                BackgroundColor="#ADD8E6"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="EndAndExpand"
+                TextColor="Black"
+                FontAttributes="Bold"/>
+    </StackLayout>
+</ContentPage>
